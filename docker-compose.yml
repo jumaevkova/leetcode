@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  leetcode_db:
+    image: postgres:latest
+    container_name: leetcode_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: leetcode_db
+    ports:
+      - "5432:5432"
