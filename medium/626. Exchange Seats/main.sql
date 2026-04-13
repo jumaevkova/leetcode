@@ -48,3 +48,13 @@
 -- +----+---------+
 -- Explanation:
 -- Note that if the number of students is odd, there is no need to change the last one's seat.
+
+SELECT id,
+       CASE
+           WHEN id % 2 = 1 AND id < (SELECT MAX(id) FROM seat)
+               THEN (SELECT student FROM seat WHERE id = s1.id + 1)
+           WHEN id % 2 = 0
+               THEN (SELECT student FROM seat WHERE id = s1.id - 1)
+           ELSE student
+           END AS student
+FROM seat s1;
